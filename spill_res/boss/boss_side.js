@@ -1,12 +1,11 @@
 $(document).ready(function() {
-                
-              
+
                 sekund = 15;
-                
+
                 var timeout;
-                
+
                 function timer() {
-                    
+
                     if (sekund === 0) {
 
                     }
@@ -14,18 +13,18 @@ $(document).ready(function() {
                         sekund=sekund-1;
                         document.getElementById("sekunder").innerHTML=sekund;
                     }
-                    
-                }     
-                
-                var solutionHtml = ""; 
+
+                }
+
+                var solutionHtml = "";
                 var solutionCss = "";
-                
-                var startingHtml = "<div id=\"container\">\n" + 
-                                   "<div id=\"kvadrat\"></div>\n" + 
+
+                var startingHtml = "<div id=\"container\">\n" +
+                                   "<div id=\"kvadrat\"></div>\n" +
                                    "<div id=\"kommando\"></div>\n" +
                                    "</div>";
-                        
-        
+
+
                 var startingCss =   "#boks {\n"+
                                     "background-color: black;\n"+
                                     "width: 100px;\n"+
@@ -33,44 +32,44 @@ $(document).ready(function() {
                                     "border-radius: 0px;\n"+
                                     "}";
 
-                $("#htmlView").val(startingHtml); 
-                $("#cssView").val(startingCss); 
-                
+                $("#htmlView").val(startingHtml);
+                $("#cssView").val(startingCss);
+
                 var sekundTeller = setInterval(timer, 1000);
-                
+
 
                 $("#viewResult").click(function() {
-                    
+
                     clearTimeout(timeout);
                     timeout = window.setTimeout(function() {
-                        $("#htmlView").val(startingHtml); 
+                        $("#htmlView").val(startingHtml);
                         $("#cssView").val(startingCss);
-                        
+
                         $("#boks").css("background-color", "black");
                         $("#statusboks").css("width", "122");
                         sekund = 15;
-                        
+
                         $("#boks").css("width", 100);
                         $("#statusboks").css("width", "122");
                         sekund = 15;
-                        
+
                         $("#boks").css("font-size", 12+"px");
                         $("#statusboks").css("width", "122");
                         sekund = 15;
-                        
+
                         document.getElementById("kommando").innerHTML = "Gjør boksen rød!";
                     },15000);
                     oppgave();
 
                 });
- 
+
                 $("#reset").click(function() {
-                    $("#htmlView").val(startingHtml); 
+                    $("#htmlView").val(startingHtml);
                     $("#cssView").val(startingCss);
-                    
+
                 });
             });
-            
+
             function oppgave(){
                 document.getElementById("kommando").innerHTML = "Gjør boksen rød!";
                 var innhold = $("#cssView").val();
@@ -100,14 +99,14 @@ $(document).ready(function() {
                                     $("#box").css("background-color", "green");
                                     $("#statusboks").css("width", "0px");
                                     setTimeout(function() {window.location.href = "../kart/kart.html";}, 4000);
-                                }   
+                                }
                             }
-                        }   
+                        }
                     }
             }
-            
+
             function finnDel(input){
-                var a = input.indexOf(";"); 
+                var a = input.indexOf(";");
                 if(a!==-1){
                    var input = input.substring(0,a);
                 }
@@ -120,9 +119,9 @@ $(document).ready(function() {
                 }
                 return input;
             }
-            
+
             function setRenderedResult(frame, html, css) {
                 frame.contents().find("html").html(html);
-                var $head = frame.contents().find("head");                
-                $head.append("<style>" + css + "</style>"); 
-            }  
+                var $head = frame.contents().find("head");
+                $head.append("<style>" + css + "</style>");
+            }

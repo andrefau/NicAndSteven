@@ -1,8 +1,8 @@
 $(document).ready(function() {
-                
+
                 var count = 310;
                 var counter = setInterval(timer, 1000);
-                
+
                 function timer() {
                     count=count-1;
                     if (count < 10) {
@@ -16,37 +16,35 @@ $(document).ready(function() {
                         document.getElementById("timer").innerHTML = 300 + " poeng";
                     }
                 }
-                
-                var solutionHtml = ""; 
+
+                var solutionHtml = "";
                 var solutionCss = "";
-                
+
                 var startingHtml = "<div id=\"tiger\"></div>";
-                        
-        
+
+
                 var startingCss =   "#tiger {\n"+
                                     "position: absolute;\n"+
                                     "width: 300px;        \n"+
                                     "left: 0;\n"+
                                     "bottom: 0;\n"+
                                     "}";
-                
+
                 //setRenderedResult($("#solutionFrame"), solutionHtml, solutionCss);
 
-                $("#htmlView").val(startingHtml); 
-                $("#cssView").val(startingCss); 
-                
-                
+                $("#htmlView").val(startingHtml);
+                $("#cssView").val(startingCss);
                 
                 $("#viewResult").click(function() {
-                    
+
                     var innhold = $("#cssView").val();
-                    
+
                     var bredde = finnDel(innhold.substring(innhold.indexOf("width:")+6, innhold.indexOf("width:")+12));
                     $("#wrapper img").css("width", bredde+"px");
-                    
+
                     if (parseInt(bredde)<50) {
                         $("#box").css("background-color", "green");
-                        
+
                         clearInterval(counter);
                         if (count > 300) {
                             count = 300;
@@ -54,16 +52,16 @@ $(document).ready(function() {
                         window.alert("Gratulerer! Du fikk: " +count+ " poeng.");
                     }
                 });
-                
+
                 $("#reset").click(function() {
-                    $("#htmlView").val(startingHtml); 
+                    $("#htmlView").val(startingHtml);
                     $("#cssView").val(startingCss);
-                    
+
                 });
             });
-            
+
             function finnDel(input){
-                var a = input.indexOf(";"); 
+                var a = input.indexOf(";");
                 if(a!==-1){
                    var input = input.substring(0,a);
                 }
@@ -76,9 +74,9 @@ $(document).ready(function() {
                 }
                 return input;
             }
-            
+
             function setRenderedResult(frame, html, css) {
                 frame.contents().find("html").html(html);
-                var $head = frame.contents().find("head");                
-                $head.append("<style>" + css + "</style>"); 
+                var $head = frame.contents().find("head");
+                $head.append("<style>" + css + "</style>");
             }

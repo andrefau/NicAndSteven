@@ -7,13 +7,13 @@ var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
     width = 640,
     height = 360,
-        
+
         spiller = {
         width:80,
         height:238,
         x: 10,
         y: 0,
-     
+
         speed: 5,
         velX: 0,
         velY: 0,
@@ -27,6 +27,7 @@ var canvas = document.getElementById("canvas"),
 var boxes = [];
 var wall = [];
 var wall2 = [];
+
 // Grenser
 boxes.push({            // Venstre grense
     x: 0,
@@ -50,15 +51,15 @@ wall.push({             // Usynlig sperre
     x: 150,
     y: 0,
     width: 10,
-    height: height    
+    height: height
 });
 wall2.push({             // Usynlig sperre
     x: 500,
     y: 0,
     width: 10,
-    height: height    
+    height: height
 });
-        
+
 // Laster inn bilde av Nic
 var spillerBilde = new Image();
 spillerBilde.onload = function () {
@@ -71,15 +72,15 @@ bgImage.onload = function () {
 bgReady = true;
 };
 bgImage.src = "../bilder/scene_form.jpg";
-    
+
 canvas.width = width;
 canvas.height = height;
 
 function update() {
-    
-    // Sjekker tastetrykk 
+
+    // Sjekker tastetrykk
     if (keys[38] || keys[32]) {
-        
+
         // Pil-opp eller space
         if (!spiller.jumping && spiller.grounded) {
             spiller.jumping = true;
@@ -107,14 +108,14 @@ function update() {
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = "transparent";
     ctx.beginPath();
-    
+
     spiller.grounded = false;
 
     for (var i = 0; i < boxes.length; i++) {
         ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
-        
+
         var dir = colCheck(spiller, boxes[i]);
-        
+
 
         if (dir === "l" || dir === "r") {
             spiller.velX = 0;
@@ -127,13 +128,13 @@ function update() {
         }
 
     }
-    
+
      for (var i = 0; i < wall.length; i++) {
         ctx.rect(wall[i].x, wall[i].y, wall[i].width, wall[i].height);
-      
+
         if(fargesjekk()==="t"){
             var vegg = colCheck(spiller, wall[i]);
-        
+
 
         if (vegg === "l" || vegg === "r") {
             spiller.velX = 0;
@@ -148,10 +149,10 @@ function update() {
     }
     for (var i = 0; i < wall.length; i++) {
         ctx.rect(wall2[i].x, wall2[i].y, wall2[i].width, wall2[i].height);
-      
-       
+
+
             var vegg = colCheck(spiller, wall2[i]);
-        
+
 
         if (vegg === "l" || vegg === "r") {
             spiller.velX = 0;
@@ -163,19 +164,19 @@ function update() {
                 spiller.velY *= -1;
             }
         }
-    
-    
+
+
     if(spiller.grounded){
          spiller.velY = 0;
     }
-    
+
     spiller.x += spiller.velX;
     spiller.y += spiller.velY;
 
     ctx.fill();
-   
+
     ctx.drawImage(spillerBilde, spiller.x, spiller.y);
-  
+
 
     requestAnimationFrame(update);
 }
@@ -193,7 +194,7 @@ function fargesjekk(){
     else{
         sjekk="f";
     }
-    
+
     return sjekk;
 }
 
@@ -238,7 +239,7 @@ function farge(){
     var cs=document.defaultView.getComputedStyle(e,null);
     var bg=cs.getPropertyValue('background-color');
     return bg;
-    
+
 }
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
@@ -251,5 +252,5 @@ document.body.addEventListener("keyup", function (e) {
 
 window.addEventListener("load", function () {
     update();
-  
+
 });

@@ -1,8 +1,8 @@
 $(document).ready(function() {
-                
+
                 var count = 310;
                 var counter = setInterval(timer, 1000);
-                
+
                 function timer() {
                     count=count-1;
                     if (count < 10) {
@@ -15,56 +15,51 @@ $(document).ready(function() {
                     } else {
                         document.getElementById("timer").innerHTML = 300 + " poeng";
                     }
-                }      
-                
+                }
+
                 var solutionHtml = "";
                 var solutionCss = "";
-                
-                var startingCss = 
+
+                var startingCss =
                             "#soppel {\n"+
                             "z-index: 0;\n"+
                             "margin-top: 300px;\n"+
                             "}\n";
-        
-                var startingHtml = "<div id=\"soppel\"></div>";
-                
-                //setRenderedResult($("#solutionFrame"), solutionHtml, solutionCss);
 
-                $("#htmlView").val(startingHtml); 
-                $("#cssView").val(startingCss); 
-                
-                
-                
+                var startingHtml = "<div id=\"soppel\"></div>";
+
+                $("#htmlView").val(startingHtml);
+                $("#cssView").val(startingCss);
+
                 $("#viewResult").click(function() {
-                    
+
                     var innhold = $("#cssView").val();
                     var z = finnDel(innhold.substring(innhold.indexOf("z-index:")+8, innhold.indexOf("z-index:")+12));
                     var margin = finnDel(innhold.substring(innhold.indexOf("margin-top:")+11, innhold.indexOf("margin-top:")+19));
-                    
+
                     $("#soppel").css("z-index", z);
                     $("#soppel").css("margin-top", margin+"px");
 
                     if((margin.lastIndexOf("-")!==-1)||(margin>650)||(z.lastIndexOf("-")!==-1)){
                         $("#box").css("background-color", "green");
-                        
+
                         clearInterval(counter);
                         if (count > 300) {
                             count = 300;
                         }
                         window.alert("Gratulerer! Du fikk: " +count+ " poeng.");
-                        document.cookie="count=1";
                     }
-                    
+
                 });
                 $("#reset").click(function() {
-                    $("#htmlView").val(startingHtml); 
+                    $("#htmlView").val(startingHtml);
                     $("#cssView").val(startingCss);
-                    
+
                 });
             });
-            
+
             function finnDel(input){
-                var a = input.indexOf(";"); 
+                var a = input.indexOf(";");
                 if(a!==-1){
                    var input = input.substring(0,a);
                 }
@@ -77,9 +72,9 @@ $(document).ready(function() {
                 }
                 return input;
             }
-            
+
             function setRenderedResult(frame, html, css) {
                 frame.contents().find("html").html(html);
-                var $head = frame.contents().find("head");                
-                $head.append("<style>" + css + "</style>"); 
+                var $head = frame.contents().find("head");
+                $head.append("<style>" + css + "</style>");
             }

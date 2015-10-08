@@ -53,8 +53,6 @@ $(document).ready(function() {
                 var oppgave2 = "Better physique <br> More famous <br> Cooler name <br> Handsomer<br> More badass<br> New haircut";
                 var oppgave3 = "Better physique <br> More famous <br> Cooler name <br> Handsomer<br> More badass<br> Tougher";
 
-                //setRenderedResult($("#solutionFrame"), solutionHtml, solutionCss);
-
 
                 $("#cssView").val(startingCss);
                 var random = Math.floor((Math.random() * 3) + 1);
@@ -74,8 +72,6 @@ $(document).ready(function() {
 
                 }
 
-                var cookie=document.cookie;
-
                 $("#viewResult").click(function() {
 
                     var innhold = $("#htmlView").val();
@@ -93,7 +89,6 @@ $(document).ready(function() {
                             count = 300;
                         }
                         window.alert("Gratulerer! Du fikk: " +count+ " poeng.");
-                        document.cookie="count=2";
                     }
                     else if(resultat === svar2){
                         $("#box").css("background-color", "green");
@@ -103,7 +98,6 @@ $(document).ready(function() {
                             count = 300;
                         }
                         window.alert("Gratulerer! Du fikk: " +count+ " poeng.");
-                        document.cookie="count=2";
                     }
                     else if(resultat === svar3){
                         $("#box").css("background-color", "green");
@@ -113,7 +107,6 @@ $(document).ready(function() {
                             count = 300;
                         }
                         window.alert("Gratulerer! Du fikk: " +count+ " poeng.");
-                        document.cookie="count=2";
                     }
 
 

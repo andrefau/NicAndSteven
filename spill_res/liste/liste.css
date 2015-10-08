@@ -1,18 +1,8 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 08.jan.2015, 13:39:57
-    Author     : microtonickitten
-*/
-
 #container {
     background-image: url("../bilder/scene_liste.jpg");
 }
 
- #canvas{ 
+ #canvas{
     top:70px;
  }
 
