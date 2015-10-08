@@ -1,5 +1,5 @@
 
-/*Globale standarder*/
+//Globale standarder
 
 html, body {
     margin: 0px; padding: 0px; border: 0px;
@@ -67,7 +67,7 @@ label {
     cursor: pointer;
 }
 
-/*Spill*/
+//Spill
 
 .block {
     position: absolute;
